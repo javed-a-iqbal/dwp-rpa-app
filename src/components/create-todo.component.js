@@ -3,18 +3,26 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 
 export default class CreateTodo extends Component {
+    _isMounted = false;
     constructor(props){
         super(props)
-
+        this.onChangeToDoNino=this.onChangeToDoNino.bind(this);
         this.onChangeToDoDiscription=this.onChangeToDoDiscription.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
         this.state={
+            nino:'',
             name:''
             }
     }
     onChangeToDoDiscription(e){
         this.setState({
            name:e.target.value 
+        });
+    }
+
+    onChangeToDoNino(e){
+        this.setState({
+           nino:e.target.value 
         });
     }
 
@@ -29,6 +37,7 @@ export default class CreateTodo extends Component {
         
 
         const newTodo={
+            _id: this.state.nino,
             name: this.state.name
             
         }
@@ -36,8 +45,10 @@ export default class CreateTodo extends Component {
         .then(res=> console.log(res.data))
 
         this.setState({
-            name:''          
+            nino:'' , 
+            name:'' ,         
         })
+        this.props.history.push('/');
 
     }
 
@@ -49,6 +60,15 @@ export default class CreateTodo extends Component {
                 <h3>Create Carers Component!!</h3>
                 <form onSubmit={this.onSubmit}>
                     
+
+                <div className="form-group">
+                    <label>Nino: </label>
+                    <input type="text"
+                            className="form-control"
+                            value={this.state.nino}
+                            onChange={this.onChangeToDoNino} />
+                    </div>
+
                     <div className="form-group">
                     <label>Name: </label>
                     <input type="text"
@@ -56,8 +76,7 @@ export default class CreateTodo extends Component {
                             value={this.state.name}
                             onChange={this.onChangeToDoDiscription} />
                     </div>
-                  
-                                       
+                                                        
 
                     <div className="form-group">
                     <input type="submit" value="Create Todo" className="btn btn-primary" />
