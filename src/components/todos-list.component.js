@@ -5,6 +5,7 @@ import axious from 'axios';
 const Todo=props=>(
     <tr>
         <td className= 'completed' >{props.todo.name}</td>
+        <td className= 'completed' >{props.todo._id}</td>
         <td>
             <Link to={"/edit/"+props.todo._id} >Edit</Link>
         </td>
@@ -57,6 +58,7 @@ export default class TodosList extends Component {
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Nino</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

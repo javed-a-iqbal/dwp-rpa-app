@@ -57,7 +57,7 @@ export default class CreateTodo extends Component {
     render() {
         return (
             <div style={{marginTop:20}}>
-                <h3>Create Carers Component!!</h3>
+                <h3>Create Carer</h3>
                 <form onSubmit={this.onSubmit}>
                     
 
@@ -79,7 +79,7 @@ export default class CreateTodo extends Component {
                                                         
 
                     <div className="form-group">
-                    <input type="submit" value="Create Todo" className="btn btn-primary" />
+                    <input type="submit" value="Create Carer" className="btn btn-primary" />
                     </div>
 
 
